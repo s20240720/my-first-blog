@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -52,10 +53,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,13 +80,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': 's202407$2024Database',
         'USER': 's202407',
         'PASSWORD': 'Msqueen0610',
         'HOST': 's202407.mysql.pythonanywhere-services.com',
         'PORT': '',
-  
+
     }
 }
 
@@ -136,7 +138,7 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
 from django.core.management.utils import get_random_secret_key
-SECRET_KEY = get_random_secret_key() 
+SECRET_KEY = get_random_secret_key()
 
 try:
     from .local_settings import *
