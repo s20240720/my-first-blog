@@ -1,3 +1,9 @@
+import os
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'mysite.settings')
+
+django.setup()
+
 from django.views import generic
 from app.models import Book, Author, Log
 from app.form import AuthorForm, BookForm, LogForm
