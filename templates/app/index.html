@@ -1,0 +1,14 @@
+<a href="{% url 'app:registerauthor' %}">著者を新規登録</a>　　
+<a href="{% url 'app:registerbook' %}">書籍を新規登録</a>　　
+<a href="{% url 'app:writinglog' %}">感想を新規登録</a><br>
+<br>
+
+{% if book_list %}
+    {% for book in book_list %}
+    <li>
+        <a href="{% url 'app:book_detail' book.id %}">{{ book.title }}</a>
+        {{ book.author }}
+        {{ book.read_date }}読了
+    </li>
+    {% endfor %}
+{% endif %}

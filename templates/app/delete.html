@@ -1,0 +1,12 @@
+<form method="POST">
+    {% csrf_token %}
+    {{obj.book}}<br>
+    {{obj.text}}<br>
+----------------------------------<br>
+    {{obj.title}}<br>
+    {{obj.author}}<br>
+    <br>
+    削除しますか？<br>
+    <button type="submit">はい</button><br>
+    <a href="{% url 'app:index' %}">やめる（一覧画面へ戻る）</a>
+</form>
