@@ -1,3 +1,6 @@
+{% extends 'app/base.html' %}
+{% block content %}
+
 <form method="POST">
     {% csrf_token %}
     {{obj.book}}<br>
@@ -10,3 +13,5 @@
     <button type="submit">はい</button><br>
     <a href="{% url 'app:index' %}">やめる（一覧画面へ戻る）</a>
 </form>
+
+{% endblock %}

@@ -1,3 +1,6 @@
+{% extends 'app/base.html' %}
+{% block content %}
+
 <h1>{{ book.title }}</h1>
 <h2>{{ book.author }}</h2>
 <h3>{{ book.read_date}}読了</h3>
@@ -7,12 +10,15 @@ ISBN: {{ book.isbn }}<br>
 {% for log in book.log.all %}
     <li>
         {{ log.text }}<br>
-        <button onclick="location.href='{% url 'app:updatelog' log.id %}'">この感想を編集</button>
-        <button onclick="location.href='{% url 'app:deletelog' log.id %}'">この感想を削除</button><br>
+        <button onclick="location.href='{% url 'app:updatelog' log.id %}'" class="edit_log_button">この感想を編集</button>
+        <button onclick="location.href='{% url 'app:deletelog' log.id %}'" class="edit_log_button">この感想を削除</button><br>
         <br>
     </li>
 
 {% endfor %}
+<br>
+<button onclick="location.href='{% url 'app:writingthisbooklog' book.id %}'" class="submit_button">新しい感想を追加</button><br>
+<br>
 <br>
 <h3>蔵書情報：</h3>
 <ul>
@@ -33,15 +39,16 @@ ISBN: {{ book.isbn }}<br>
         <form method="POST" action="{% url 'app:requestlibrarydata' book.id %}">
             {% csrf_token %}
             <input type="hidden" name="session" value="{{ session }}">
-            <button type="submit">蔵書情報を更新する（数秒程待ってから押してください</button>
+            <button type="submit" class="update_button">蔵書情報を更新する（数秒程待ってから押してください</button>
         </form>
     {% endif %}
 
 </ul>
 <br>
-<button onclick="location.href='{% url 'app:writingthisbooklog' book.id %}'">新しい感想を追加</button><br>
-<br>
-<button onclick="location.href='{% url 'app:updatebook' book.id %}'">この書籍を編集</button>
-<button onclick="location.href='{% url 'app:deletebook' book.id %}'">この書籍を削除</button>
+
+<button onclick="location.href='{% url 'app:updatebook' book.id %}'" class="edit_book_button">この書籍を編集</button>
+<button onclick="location.href='{% url 'app:deletebook' book.id %}'" class="edit_book_button">この書籍を削除</button>
 <br><br>
 <a href="{% url 'app:index' %}">一覧画面へ戻る</a>
+
+{% endblock %}

@@ -1,14 +1,22 @@
-<a href="{% url 'app:registerauthor' %}">著者を新規登録</a>　　
-<a href="{% url 'app:registerbook' %}">書籍を新規登録</a>　　
-<a href="{% url 'app:writinglog' %}">感想を新規登録</a><br>
+{% extends 'app/base.html' %}
+{% block content %}
+
+<h1>いろいろ読書ログ</h1>
+
+<button onclick="location.href='{% url 'app:registerauthor' %}'" class="edit_book_button">著者を新規登録</button>
+<button onclick="location.href='{% url 'app:registerbook' %}'" class="edit_book_button">書籍を新規登録</button>
+<button onclick="location.href='{% url 'app:writinglog' %}'" class="edit_book_button">感想を新規登録</button>
+<br>
 <br>
 
 {% if book_list %}
     {% for book in book_list %}
-    <li>
+    <li class="index_list">
         <a href="{% url 'app:book_detail' book.id %}">{{ book.title }}</a>
         {{ book.author }}
         {{ book.read_date }}読了
     </li>
     {% endfor %}
 {% endif %}
+
+{% endblock %}
