@@ -20,7 +20,7 @@ ISBN: {{ book.isbn }}<br>
 <button onclick="location.href='{% url 'app:writingthisbooklog' book.id %}'" class="submit_button">新しい感想を追加</button><br>
 <br>
 <br>
-<h3>蔵書情報：</h3>
+<h3>品川区立図書館の蔵書情報：</h3>
 <ul>
     {% for location, status in library.items %}
         <li>{{ location }}: {{ status }}</li>
